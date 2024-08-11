@@ -73,13 +73,13 @@ const showPhoneDetails = (phone) =>{
     const showDetailContainer = document.getElementById('detailContainer')
     showDetailContainer.innerHTML = `
      <img src="${phone.image}" class="text-center" alt="">
-     <p><span class="font-bold">${phone?.mainFeatures?.storage}</span></p>
-     <p><span class="font-bold">${phone?.mainFeatures?.displaySize}</span></p>
-     <p><span class="font-bold">${phone?.mainFeatures?.chipSet}</span></p>
-     <p><span class="font-bold">${phone?.slug}</span></p>
-     <p><span class="font-bold">${phone?.releaseDate}</span></p>
-     <p><span class="font-bold">${phone?.brand}</span></p>
-     <p><span class="font-bold">${phone?.others?.GPS}</span></p>
+     <p><span class="font-bold">Storage:      </span> <span> ${phone?.mainFeatures?.storage}</span></p>
+     <p><span class="font-bold">Display Size: </span> <span> ${phone?.mainFeatures?.displaySize}</span></p>
+     <p><span class="font-bold">ChipSet:      </span> <span> ${phone?.mainFeatures?.chipSet}</span></p>
+     <p><span class="font-bold">Slug:         </span> <span> ${phone?.slug}</span></p>
+     <p><span class="font-bold">Release Date: </span> <span> ${phone?.releaseDate}</span></p>
+     <p><span class="font-bold">Brand:        </span> <span> ${phone?.brand}</span></p>
+     <p><span class="font-bold">GPS:          </span> <span> ${phone?.others?.GPS}</span></p>
     `
     showDetailsModal.showModal()
 }
