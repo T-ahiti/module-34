@@ -70,6 +70,17 @@ const showPhoneDetails = (phone) =>{
     // console.log(phone)
     const phoneName = document.getElementById('phone-name')
     phoneName.innerText = phone.name
+    const showDetailContainer = document.getElementById('detailContainer')
+    showDetailContainer.innerHTML = `
+     <img src="${phone.image}" class="text-center" alt="">
+     <p><span class="font-bold">${phone?.mainFeatures?.storage}</span></p>
+     <p><span class="font-bold">${phone?.mainFeatures?.displaySize}</span></p>
+     <p><span class="font-bold">${phone?.mainFeatures?.chipSet}</span></p>
+     <p><span class="font-bold">${phone?.slug}</span></p>
+     <p><span class="font-bold">${phone?.releaseDate}</span></p>
+     <p><span class="font-bold">${phone?.brand}</span></p>
+     <p><span class="font-bold">${phone?.others?.GPS}</span></p>
+    `
     showDetailsModal.showModal()
 }
 
