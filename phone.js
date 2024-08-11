@@ -1,13 +1,13 @@
 
-const loadPhone = async (searchText) =>{
+const loadPhone = async (searchText, isShowAll) =>{
      const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
      const data = await res.json()
      const phones = data.data
      console.log(phones)
-     displayPhones(phones)
+     displayPhones(phones, isShowAll)
 }
 
-const displayPhones = phones =>{
+const displayPhones = (phones, isShowAll) =>{
 
      // 1. call by id
      const phoneCont = document.getElementById('phoneContainer')
@@ -16,14 +16,18 @@ const displayPhones = phones =>{
 
     //  display show all button if there are more than 18 phones
     const showButton = document.getElementById('ShowAllContainer')
-    if( phones.length > 18){
+    if( phones.length > 18 && !isShowAll){
         ShowAllContainer.classList.remove('hidden')
     }
     else{
         ShowAllContainer.classList.add('hidden')
     }
+    console.log('is show all', isShowAll)
 
-     phones = phones.slice(0,18)
+    // display only first 18 phones if not show all
+    if(!isShowAll){
+        phones = phones.slice(0,18)
+    }
 
 
     phones.forEach(phone => {
@@ -41,7 +45,7 @@ const displayPhones = phones =>{
           <p>There are many variations of passages of available, but the majority have suffered</p>
           <p class="font-bold">$999</p>
           <div class="card-actions">
-            <button class="btn btn-primary text-white">Show Details</button>
+            <button onclick="handleShowDetail('${phone.slug}')" class="btn btn-primary text-white">Show Details</button>
           </div>
         </div>
     `
@@ -53,14 +57,21 @@ const displayPhones = phones =>{
     toggleLoadingBar(false)
 } 
 
+// 
+const handleShowDetail = async(id) =>{
+   console.log('clicked show details', id)
+   const res = await fetch(`https://openapi.programming-hero.com/api/phone/{id}`)
+   const data = await res.json()
+   console.log(data)
+}
 
 // handle search button
- const handleSearch = () => {
+ const handleSearch = (isShowAll) => {
     toggleLoadingBar(true)
     const searchbar = document.getElementById('searchField')
     const getText = searchbar.value 
     console.log(getText)
-    loadPhone(getText)
+    loadPhone(getText, isShowAll)
  }
 
  const toggleLoadingBar = (isLoading) =>{
@@ -75,4 +86,8 @@ const displayPhones = phones =>{
 
 
 //  handle show all
+const handleShowAll = () =>{
+    handleSearch(true)
+}
+
 // loadPhone()
