@@ -48,16 +48,29 @@ const displayPhones = phones =>{
     // 4. append child 
     phoneCont.appendChild(phoneCard)
     });
+
+    // hide loading bar
+    toggleLoadingBar(false)
 } 
 
 
 // handle search button
  const handleSearch = () => {
+    toggleLoadingBar(true)
     const searchbar = document.getElementById('searchField')
     const getText = searchbar.value 
     console.log(getText)
     loadPhone(getText)
  }
 
+ const toggleLoadingBar = (isLoading) =>{
+    const loadingBar = document.getElementById('loadingBar')
+    if(isLoading){
+        loadingBar.classList.remove('hidden')
+    }
+    else{
+        loadingBar.classList.add('hidden')
+    }
+ }
 
 // loadPhone()
