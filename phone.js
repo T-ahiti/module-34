@@ -73,4 +73,6 @@ const displayPhones = phones =>{
     }
  }
 
+
+//  handle show all
 // loadPhone()
