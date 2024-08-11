@@ -14,6 +14,8 @@ const displayPhones = phones =>{
      //  clear phone container cards before adding new cards
      phoneCont.textContent = ''
 
+     phones = phones.slice(0,18)
+
     phones.forEach(phone => {
     console.log(phone)
     // 2. select the div
