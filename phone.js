@@ -22,7 +22,7 @@ const displayPhones = (phones, isShowAll) =>{
     else{
         ShowAllContainer.classList.add('hidden')
     }
-    console.log('is show all', isShowAll)
+    // console.log('is show all', isShowAll)
 
     // display only first 18 phones if not show all
     if(!isShowAll){
@@ -59,10 +59,18 @@ const displayPhones = (phones, isShowAll) =>{
 
 // 
 const handleShowDetail = async(id) =>{
-   console.log('clicked show details', id)
-   const res = await fetch(`https://openapi.programming-hero.com/api/phone/{id}`)
+//    console.log('clicked show details', id)
+   const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
    const data = await res.json()
-   console.log(data)
+   const phone = data.data
+   showPhoneDetails(phone)
+}
+
+const showPhoneDetails = (phone) =>{
+    // console.log(phone)
+    const phoneName = document.getElementById('phone-name')
+    phoneName.innerText = phone.name
+    showDetailsModal.showModal()
 }
 
 // handle search button
