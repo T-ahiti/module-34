@@ -14,7 +14,17 @@ const displayPhones = phones =>{
      //  clear phone container cards before adding new cards
      phoneCont.textContent = ''
 
+    //  display show all button if there are more than 18 phones
+    const showButton = document.getElementById('ShowAllContainer')
+    if( phones.length > 18){
+        ShowAllContainer.classList.remove('hidden')
+    }
+    else{
+        ShowAllContainer.classList.add('hidden')
+    }
+
      phones = phones.slice(0,18)
+
 
     phones.forEach(phone => {
     console.log(phone)
